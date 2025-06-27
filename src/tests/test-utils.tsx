@@ -1,21 +1,19 @@
-import { ReactNode } from 'react';
-import { render, RenderOptions } from '@testing-library/react';
+import React from 'react';
+import { render } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 import { MantineProvider } from '@mantine/core';
-import { MemoryRouter } from 'react-router-dom';
 
-const AllProviders = ({ children }: { children: ReactNode }) => {
+const AllProviders = ({ children }: { children: React.ReactNode }) => {
   return (
     <MantineProvider>
-      <MemoryRouter>
-        {children}
-      </MemoryRouter>
+      <BrowserRouter>{children}</BrowserRouter>
     </MantineProvider>
   );
 };
 
 const customRender = (
   ui: React.ReactElement,
-  options?: Omit<RenderOptions, 'wrapper'>
+  options?: any
 ) => render(ui, { wrapper: AllProviders, ...options });
 
 export * from '@testing-library/react';

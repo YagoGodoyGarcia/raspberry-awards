@@ -1,9 +1,8 @@
-import { screen, waitFor, render } from './test-utils'; // usa os exports do custom render
+import { screen, render } from './test-utils'; // usa o custom render com BrowserRouter
 import Dashboard from '../pages/Dashboard';
 import * as api from '../services/movieApi';
 
 jest.mock('../services/movieApi');
-
 const mockedApi = api as jest.Mocked<typeof api>;
 
 describe('Dashboard', () => {
@@ -45,23 +44,18 @@ describe('Dashboard', () => {
   });
 
   it('renderiza todos os painéis principais do dashboard', async () => {
-      try {
-      render(<Dashboard />);
-    } catch (e) {
-      console.error('Erro ao renderizar o Dashboard:', e);
-      throw e;
-    }
+    render(<Dashboard />);
 
-    await waitFor(() => {
-      expect(screen.getByText(/Anos com múltiplos vencedores/i)).toBeInTheDocument();
-      expect(screen.getByText(/Top 3 estúdios com mais vitórias/i)).toBeInTheDocument();
-      expect(screen.getByText(/Intervalo entre prêmios/i)).toBeInTheDocument();
-      expect(screen.getByText(/Vencedores por Ano/i)).toBeInTheDocument();
-    });
+    // Aguarda os títulos aparecerem (espera implícita)
+    expect(await screen.findByText(/Anos com múltiplos vencedores/i)).toBeInTheDocument();
+    expect(await screen.findByText(/Top 3 estúdios com mais vitórias/i)).toBeInTheDocument();
+    expect(await screen.findByText(/Intervalo entre prêmios/i)).toBeInTheDocument();
+    expect(await screen.findByText(/Vencedores por Ano/i)).toBeInTheDocument();
 
-    expect(screen.getByText('1986')).toBeInTheDocument();
-    expect(screen.getByText('Studio A')).toBeInTheDocument();
-    expect(screen.getByText('Max Producer')).toBeInTheDocument();
-    expect(screen.getByText('Movie A')).toBeInTheDocument();
+    // Verifica dados renderizados
+    expect(await screen.findByText('1986')).toBeInTheDocument();
+    expect(await screen.findByText('Studio A')).toBeInTheDocument();
+    expect(await screen.findByText('Max Producer')).toBeInTheDocument();
+    expect(await screen.findByText('Movie A')).toBeInTheDocument();
   });
 });
