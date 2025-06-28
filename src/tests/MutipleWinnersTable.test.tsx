@@ -1,20 +1,21 @@
 import { screen, render } from './test-utils'; // usa o custom render com BrowserRouter
 import Dashboard from '../pages/Dashboard';
 import * as api from '../services/movieApi';
+import MutipleWinnersTable from '../components/Dashboard/MultipleWinnersTable';
 
 jest.mock('../services/movieApi');
 const mockedApi = api as jest.Mocked<typeof api>;
 
-describe('Dashboard', () => {
+describe('MutipleWinnersTable', () => {
   beforeEach(() => {
     mockedApi.getMultipleWinners.mockResolvedValue({
       years: [
         { year: 1986, winnerCount: 2 },
-        { year: 1990, winnerCount: 2 },
+        { year: 1990, winnerCount: 3 },
       ],
     });
 
-    mockedApi.getTopStudios.mockResolvedValue({
+    /**    mockedApi.getTopStudios.mockResolvedValue({
       studios: [
         { name: 'Studio A', winCount: 6 },
         { name: 'Studio B', winCount: 5 },
@@ -40,22 +41,22 @@ describe('Dashboard', () => {
         producers: ['Producer X'],
         winner: true,
       },
-    ]);
+    ]); */
+
   });
 
   it('renderiza todos os painéis principais do dashboard', async () => {
-    render(<Dashboard />);
+    render(<MutipleWinnersTable />);
 
-    // Aguarda os títulos aparecerem (espera implícita)
+    // Aguarda os títulos aparecerem 
     expect(await screen.findByText(/Anos com múltiplos vencedores/i)).toBeInTheDocument();
-    expect(await screen.findByText(/Top 3 estúdios com mais vitórias/i)).toBeInTheDocument();
-    expect(await screen.findByText(/Intervalo entre prêmios/i)).toBeInTheDocument();
-    expect(await screen.findByText(/Vencedores por Ano/i)).toBeInTheDocument();
+    expect(await screen.findByText('Ano')).toBeInTheDocument();
+    expect(await screen.findByText(/Quantidadede vencedores/i)).toBeInTheDocument();
 
     // Verifica dados renderizados
     expect(await screen.findByText('1986')).toBeInTheDocument();
-    expect(await screen.findByText('Studio A')).toBeInTheDocument();
-    expect(await screen.findByText('Max Producer')).toBeInTheDocument();
-    expect(await screen.findByText('Movie A')).toBeInTheDocument();
+    expect(await screen.findByText(2)).toBeInTheDocument();
+    expect(await screen.findByText('1990')).toBeInTheDocument();
+    expect(await screen.findByText(3)).toBeInTheDocument();
   });
 });

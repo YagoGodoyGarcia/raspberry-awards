@@ -21,7 +21,7 @@ const MutipleWinnersTable = () => {
 
     return (
         <>
-            <Title order={3}>Anos com mútiplos vencedores</Title>
+            <Title order={3}>Anos com múltiplos vencedores</Title>
 
             <Table striped>
                 <thead>
