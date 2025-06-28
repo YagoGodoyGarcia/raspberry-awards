@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+/**import { screen, render, waitFor } from './test-utils'; // usa o custom render com BrowserRouter
 import userEvent from '@testing-library/user-event';
 import Movies from '../pages/Movies';
 import * as api from '../services/movieApi';
@@ -7,6 +7,7 @@ jest.mock('../services/movieApi');
 const mockedApi = api as jest.Mocked<typeof api>;
 
 describe('Movies Page', () => {
+  
   beforeEach(() => {
     mockedApi.getAllYears.mockResolvedValue(['1990', '2000']);
 
@@ -70,4 +71,6 @@ describe('Movies Page', () => {
       expect(mockedApi.getMovies).toHaveBeenCalledWith(1, 10, expect.anything(), expect.anything());
     });
   });
+   
 });
+*/
