@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { screen, render } from './test-utils'; // usa o custom render com BrowserRouter
 import userEvent from '@testing-library/user-event';
 import Filters from '../components/MovieList/Filters';
 
@@ -14,13 +14,13 @@ describe('Filters', () => {
       />
     );
 
-    const anoSelect = screen.getByLabelText('Ano');
+    const anoSelect = screen.getByPlaceholderText('Todos os anos');
     await userEvent.click(anoSelect);
     await userEvent.click(screen.getByText('2000'));
 
     expect(handleChange).toHaveBeenCalledWith('year', '2000');
 
-    const vencedorSelect = screen.getByLabelText('Vencedor');
+    const vencedorSelect = screen.getByPlaceholderText('Todos');
     await userEvent.click(vencedorSelect);
     await userEvent.click(screen.getByText('Sim'));
 
