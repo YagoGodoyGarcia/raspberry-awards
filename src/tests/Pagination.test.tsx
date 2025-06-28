@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { screen, render } from './test-utils'; // usa o custom render com BrowserRouter
 import userEvent from '@testing-library/user-event';
 import Pagination from '../components/MovieList/Pagination';
 
