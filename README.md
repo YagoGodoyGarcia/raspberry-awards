@@ -1,107 +1,116 @@
 
-# raspberry-awards - Projeto Golden Raspberry Awards
+# 🍿 Raspberry Awards - Frontend
 
-## 1. Especificação do Teste
-
-Este projeto consiste em desenvolver uma interface para leitura da lista de indicados e vencedores da categoria **Pior Filme do Golden Raspberry Awards**.
-
-A aplicação possui duas views principais:
-
-- **Dashboard**  
-- **Lista de todos os filmes**
-
-O sistema apresenta um menu lateral para navegação entre as views.
-
-Os dados são obtidos através da API pública:  
-`https://challenge.outsera.tech/api/movies`
-
-## 2. Requisitos do Sistema
-
-### Dashboard
-
-O dashboard contém 4 painéis com as seguintes informações:
-
-- Anos que tiveram mais de um vencedor (exibidos em tabela)
-- Três estúdios com maior número de vitórias (exibidos em tabela)
-- Produtores com maior e menor intervalo entre vitórias (exibidos em tabela)
-- Vencedores de um determinado ano, pesquisados por campo de busca
-
-### Lista de Filmes
-
-Exibe todos os filmes indicados e vencedores da categoria, com detalhes fornecidos pela API.
-
-## 3. Tecnologias Utilizadas
-
-- React 19
-- Mantine 8 (componentes UI)
-- React Router Dom 7 (navegação)
-- Axios (requisições HTTP)
-- Jest + React Testing Library (testes unitários)
-- TypeScript
-
-## 4. Como Rodar o Projeto
-
-### Pré-requisitos
-
-- Node.js (versão 18 ou superior recomendada)
-- npm ou yarn instalado
-
-### Passos para rodar localmente
-
-1. Clone o repositório:
-   ```bash
-   git clone <url-do-repositorio>
-   cd raspberry-awards
-   ```
-
-2. Instale as dependências:   
-   ```bash
-   npm install
-   # ou
-   yarn install
-   ```
-
-3. Inicie a aplicação:   
-   ```bash
-   npm start
-   # ou
-   yarn start
-   ```
-
-A aplicação será aberta automaticamente no navegador em:  
-[http://localhost:3000](http://localhost:3000)
-
-## 5. Executar os Testes Unitários
-
-Para rodar os testes unitários, execute:
-
-```bash
-npm test
-# ou
-yarn test
-```
-
-O comando irá iniciar o Jest em modo watch, rodando os testes sempre que houver alterações nos arquivos.
-
-## 6. Estrutura do Projeto
-
-```bash
-/src
-  /components         # Componentes reutilizáveis (Sidebar, Card, Table, etc.)
-  /pages              # Páginas principais (Dashboard, MoviesList)
-  /services           # Serviço de integração com API (ex: movieService.ts)
-  /tests              # Testes unitários com Jest + Testing Library
-  App.tsx             # Componente raiz da aplicação e configuração de rotas
-  index.tsx           # Ponto de entrada da aplicação
-```
-
-## 7. Considerações Finais
-
-- A aplicação foi construída com foco em responsividade, usabilidade e leitura clara dos dados.
-- Utiliza boas práticas de arquitetura, componentização e testes.
-- Os dados são consumidos diretamente da API fornecida, e exibidos em tabelas organizadas por regras de negócio.
-- O código está preparado para fácil manutenção e evolução.
+Interface web para visualizar dados da premiação Golden Raspberry Awards (categoria *Pior Filme*). Desenvolvido como parte de um desafio técnico front-end.
 
 ---
 
-Qualquer dúvida ou sugestão, fique à vontade para entrar em contato.
+## 📸 Preview
+
+![Dashboard Screenshot](./assets/dashboard-preview.png)
+![Lista de Filmes Screenshot](./assets/list-preview.png)
+
+---
+
+## 📚 Funcionalidades
+
+### 📊 Dashboard
+- Listagem dos anos com múltiplos vencedores
+- Top 3 estúdios com mais vitórias
+- Produtores com maior e menor intervalo entre vitórias
+- Lista de filmes vencedores por ano selecionado
+
+### 🎬 Lista de Filmes
+- Paginação de filmes
+- Filtro por ano
+- Filtro por vencedor (sim/não)
+
+---
+
+## 🚀 Tecnologias Utilizadas
+
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Mantine UI](https://mantine.dev/)
+- [Axios](https://axios-http.com/)
+- [Jest](https://jestjs.io/) + [Testing Library](https://testing-library.com/)
+- [Vite](https://vitejs.dev/) *(se aplicável)*
+
+---
+
+## 📁 Estrutura de Pastas
+
+```
+src/
+│
+├── components/
+│   ├── Dashboard/       # Componentes específicos do Dashboard
+│   ├── MovieList/       # Componentes da lista de filmes
+│   └── SidebarLayout.tsx
+│
+├── pages/
+│   ├── Dashboard.tsx    # View principal do Dashboard
+│   └── Movies.tsx       # View da listagem de filmes
+│
+├── services/
+│   └── movieApi.tsx     # Consumo da API
+│
+├── tests/               # Testes unitários com Jest
+└── styles/              # Estilos globais
+```
+
+---
+
+## ⚙️ Como rodar o projeto localmente
+
+### 1. Clonar o repositório
+
+```bash
+git clone https://github.com/YagoGodoyGarcia/raspberry-awards.git
+cd raspberry-awards
+```
+
+### 2. Instalar as dependências
+
+```bash
+npm install
+```
+
+### 3. Rodar o projeto em modo desenvolvimento
+
+```bash
+npm run dev
+```
+
+Acesse: [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 🧪 Executar os testes
+
+```bash
+npm run test
+```
+
+---
+
+## 🖼️ Requisitos Atendidos
+
+- [x] Dashboard com 4 painéis conforme especificação
+- [x] Filtros e paginação na listagem de filmes
+- [x] Responsividade mínima 768x1280
+- [x] Testes unitários de componentes
+- [x] Código limpo, legível e modular
+- [x] Documentação clara
+
+---
+
+## 🔗 API de Dados
+
+Fornecida via: [https://challenge.outsera.tech/api/movies](https://challenge.outsera.tech/api/movies)
+
+---
+
+## ✨ Autor
+
+Desenvolvido por **Yago Godoy Garcia** — [LinkedIn](https://www.linkedin.com/in/yago-godoy-204016130)
