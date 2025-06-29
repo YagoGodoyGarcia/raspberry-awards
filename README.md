@@ -4,7 +4,14 @@
 Interface web para visualizar dados da premiação Golden Raspberry Awards (categoria *Pior Filme*). Desenvolvido como parte de um desafio técnico front-end.
 
 ---
+## 🔗 Demo Online
+Acesse a demonstração do projeto em produção:
 
+👉 raspberry-awards-yago.vercel.app
+
+Explore o dashboard interativo, visualize estatísticas da premiação Golden Raspberry Awards e filtre filmes vencedores por ano com uma interface moderna e responsiva.
+
+---
 ## 📸 Preview
 
 ![Dashboard Screenshot](./assets/dashboard-preview.png)
