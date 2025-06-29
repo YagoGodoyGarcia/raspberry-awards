@@ -13,15 +13,15 @@ const mockMovies = [
 ];
 
 describe('MovieTable', () => {
-  it('exibe os dados dos filmes corretamente', () => {
+  it('exibe os dados dos filmes corretamente', async () => {
     render(<MovieTable movies={mockMovies} />);
 
     // Aguarda os títulos aparecerem 
-    expect(screen.findByText('Título')).toBeInTheDocument();
-    expect(screen.findByText('Ano')).toBeInTheDocument();
-    expect(screen.findByText('Estúdio')).toBeInTheDocument();
-    expect(screen.findByText('Produtores')).toBeInTheDocument();
-    expect(screen.findByText('Vencedor?')).toBeInTheDocument();
+    expect(await screen.findByText('Título')).toBeInTheDocument();
+    expect(await screen.findByText('Ano')).toBeInTheDocument();
+    expect(await screen.findByText('Estúdios')).toBeInTheDocument();
+    expect(await screen.findByText('Produtores')).toBeInTheDocument();
+    expect(await screen.findByText('Vencedor?')).toBeInTheDocument();
     // Verifica dados renderizados
     expect(screen.getByText('Filme A')).toBeInTheDocument();
     expect(screen.getByText('1990')).toBeInTheDocument();
