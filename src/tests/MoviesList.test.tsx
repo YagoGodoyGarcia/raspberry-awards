@@ -1,4 +1,4 @@
-/**import { screen, render, waitFor } from './test-utils'; // usa o custom render com BrowserRouter
+import { screen, render, waitFor } from './test-utils'; // usa o custom render com BrowserRouter
 import userEvent from '@testing-library/user-event';
 import Movies from '../pages/Movies';
 import * as api from '../services/movieApi';
@@ -29,6 +29,12 @@ describe('Movies Page', () => {
     });
   });
 
+  it('renderiza componente movies', async () => {
+    render(<Movies />);
+
+    expect(await screen.findByText('Lista de Filmes')).toBeInTheDocument();
+  });
+/**
   it('renderiza listagem com filtros e paginação', async () => {
     render(<Movies />);
 
@@ -71,6 +77,5 @@ describe('Movies Page', () => {
       expect(mockedApi.getMovies).toHaveBeenCalledWith(1, 10, expect.anything(), expect.anything());
     });
   });
-   
+   */
 });
-*/
