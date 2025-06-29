@@ -14,35 +14,6 @@ describe('MutipleWinnersTable', () => {
         { year: 1990, winnerCount: 3 },
       ],
     });
-
-    /**    mockedApi.getTopStudios.mockResolvedValue({
-      studios: [
-        { name: 'Studio A', winCount: 6 },
-        { name: 'Studio B', winCount: 5 },
-      ],
-    });
-
-    mockedApi.getProducersInterval.mockResolvedValue({
-      max: [
-        { producer: 'Max Producer', interval: 10, previousWin: 2000, followingWin: 2010 },
-      ],
-      min: [
-        { producer: 'Min Producer', interval: 1, previousWin: 2000, followingWin: 2001 },
-      ],
-    });
-
-    mockedApi.getAllYears.mockResolvedValue(['2000', '2010']);
-    mockedApi.getWinnersByYear.mockResolvedValue([
-      {
-        id: 1,
-        title: 'Movie A',
-        year: 2000,
-        studios: ['Studio X'],
-        producers: ['Producer X'],
-        winner: true,
-      },
-    ]); */
-
   });
 
   it('renderiza todos os painéis principais do dashboard', async () => {

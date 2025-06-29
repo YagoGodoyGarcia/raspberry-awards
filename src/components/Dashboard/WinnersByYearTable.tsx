@@ -23,7 +23,7 @@ const WinnersByYearTable = () => {
     <>
       <Title order={3}>Vencedores por Ano</Title>
       <YearSelect years={years} onChange={setSelectedYear} />
-      <Table striped>
+      <Table striped highlightOnHover withColumnBorders>
         <thead>
           <tr>
             <th>Título</th>

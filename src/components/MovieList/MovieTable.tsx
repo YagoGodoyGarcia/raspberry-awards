@@ -11,7 +11,7 @@ interface Movie {
 
 const MovieTable = ({ movies }: { movies: Movie[] }) => {
   return (
-    <Table striped>
+    <Table striped highlightOnHover withColumnBorders>
       <thead>
         <tr>
           <th>Título</th>

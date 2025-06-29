@@ -23,7 +23,7 @@ const MutipleWinnersTable = () => {
         <>
             <Title order={3}>Anos com múltiplos vencedores</Title>
 
-            <Table striped>
+            <Table striped highlightOnHover withColumnBorders>
                 <thead>
                     <tr>
                         <th>Ano</th>

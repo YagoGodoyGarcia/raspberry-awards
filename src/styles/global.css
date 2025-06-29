@@ -1,6 +1,10 @@
+body {
+  background-color: #f5f6fa;
+}
+
 table {
   font-family: arial, sans-serif;
-  border-collapse: collapse;
+  border-collapse : collapse;
   width: 100%;
 }
 

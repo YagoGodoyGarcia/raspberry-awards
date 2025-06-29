@@ -24,7 +24,7 @@ const ProducersIntervalTable = () => {
     const renderTable = (label: string, data: ProducerInterval[]) => (
         <>
             <Title order={4}>{label}</Title>
-            <Table striped>
+            <Table striped highlightOnHover withColumnBorders>
                 <thead>
                     <tr>
                         <th>Produtor</th>

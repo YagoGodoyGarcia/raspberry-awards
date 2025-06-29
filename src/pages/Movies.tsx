@@ -61,7 +61,7 @@ const Movies = () => {
   return (
     <Container size="xl" py="lg">
       <Title order={2} mb="md">Lista de Filmes</Title>
-      <Paper shadow="xs" p="md">
+      <Paper shadow="sm" p="lg" radius="lg" withBorder>
         <Stack gap="md">
           <Filters
             years={years}

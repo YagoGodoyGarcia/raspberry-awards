@@ -20,7 +20,7 @@ const TopStudiosTable = () => {
         <>
             <Title order={3}>Top 3 estúdios com mais vitórias</Title>
 
-            <Table striped>
+            <Table striped highlightOnHover withColumnBorders>
                 <thead>
                     <tr>
                         <th>Estúdio</th>

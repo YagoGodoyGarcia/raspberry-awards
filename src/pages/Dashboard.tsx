@@ -9,27 +9,27 @@ const Dashboard = () => {
     <Container size="xl" py="lg">
       <Title order={3} mb="md">Dashboard</Title>
 
-      <Grid gutter="md">
+      <Grid gutter="xl">
         <Grid.Col span={{ base: 12, md: 6 }}>
-          <Paper shadow="xs" p="md" radius="md">
+          <Paper shadow="sm" p="lg" radius="lg" withBorder>
             <MultipleWinnersTable />
           </Paper>
         </Grid.Col>
 
         <Grid.Col span={{ base: 12, md: 6 }}>
-          <Paper shadow="xs" p="md" radius="md">
+          <Paper shadow="sm" p="lg" radius="lg" withBorder>
             <TopStudiosTable />
           </Paper>
         </Grid.Col>
 
         <Grid.Col span={{ base: 12, md: 6 }}>
-          <Paper shadow="xs" p="md" radius="md">
+          <Paper shadow="sm" p="lg" radius="lg" withBorder>
             <ProducersIntervalTable />
           </Paper>
         </Grid.Col>
 
         <Grid.Col span={{ base: 12, md: 6 }}>
-          <Paper shadow="xs" p="md" radius="md">
+          <Paper shadow="sm" p="lg" radius="lg" withBorder>
             <WinnersByYearTable />
           </Paper>
         </Grid.Col>
