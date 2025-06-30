@@ -8,7 +8,7 @@ Interface web para visualizar dados da premiação Golden Raspberry Awards (cate
 
 Acesse a demonstração do projeto em produção:
 
-👉 [raspberry-awards-yago.vercel.app](https://raspberry-awards-yago.vercel.app)
+👉 [raspberry-awards.vercel.app](https://raspberry-awards.vercel.app)
 
 > Explore o dashboard interativo, visualize estatísticas da premiação Golden Raspberry Awards e filtre filmes vencedores por ano com uma interface moderna e responsiva.
 
