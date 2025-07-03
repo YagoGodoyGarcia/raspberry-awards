@@ -20,7 +20,6 @@ Acesse a demonstração do projeto em produção:
 <br>
 
 ### Dashboard
-![Dashboard Screenshot](./assets/dashboard-preview.png)
 
 ### Lista de Filmes
 ![Lista de Filmes Screenshot](./assets/list-preview.png)
