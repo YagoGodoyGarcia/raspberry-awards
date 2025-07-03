@@ -9,7 +9,7 @@ describe('Filters', () => {
     render(
       <Filters
         years={['1990', '2000']}
-        filters={{ year: '', winner: '' }}
+        filters={{ title: '', winner: '' }}
         onChange={handleChange}
       />
     );
