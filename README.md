@@ -96,7 +96,7 @@ npm install
 ### 3. Rodar o projeto em modo desenvolvimento
 
 ```bash
-npm run dev
+npm run start
 ```
 
 Acesse: [http://localhost:3000](http://localhost:3000)
