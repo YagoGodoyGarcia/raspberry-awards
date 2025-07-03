@@ -10,33 +10,34 @@ const WinnersByYearTable = () => {
   const [years, setYears] = useState<string[]>([]);
 
   useEffect(() => {
-     getAllYears().then((data) => setYears(data));
+    getAllYears().then((data) => setYears(data));
+    
   }, []);
 
-  useEffect(() => {
-    if (selectedYear) {
-      getWinnersByYear(parseInt(selectedYear)).then((res) => setWinners(res));
-    }
-  }, [selectedYear]);
+  const handleSearch = async (year: string) => {
+    
+    const movies = await getWinnersByYear(parseInt(year));
+    setWinners(movies);
+  };
 
   return (
     <>
-      <Title order={3}>Vencedores por Ano</Title>
-      <YearSelect years={years} onChange={setSelectedYear} />
+      <Title order={3}>List movie winners by year</Title>
+      <YearSelect years={years} onSearch={handleSearch} />
       <Table striped highlightOnHover withColumnBorders>
         <thead>
           <tr>
-            <th>Título</th>
-            <th>Estúdios</th>
-            <th>Produtores</th>
+            <th>Id</th>
+            <th>Year</th>
+            <th>Title</th>
           </tr>
         </thead>
         <tbody>
           {winners.map((movie) => (
             <tr key={movie.id}>
+              <td>{movie.id}</td>
+              <td>{movie.year}</td>
               <td>{movie.title}</td>
-              <td>{movie.studios.join(', ')}</td>
-              <td>{movie.producers.join(', ')}</td>
             </tr>
           ))}
         </tbody>

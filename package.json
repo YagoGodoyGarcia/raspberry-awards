@@ -6,6 +6,7 @@
     "@mantine/core": "^8.0.2",
     "@mantine/emotion": "^8.0.2",
     "@mantine/hooks": "^8.0.2",
+    "@tabler/icons-react": "^3.34.0",
     "@testing-library/dom": "^10.4.0",
     "@types/node": "^16.18.126",
     "@types/react": "^19.1.6",

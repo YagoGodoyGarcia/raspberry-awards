@@ -27,12 +27,12 @@ const Dashboard = () => {
             <ProducersIntervalTable />
           </Paper>
         </Grid.Col>
-{/** 
+
         <Grid.Col span={{ base: 12, md: 6 }}>
           <Paper shadow="sm" p="lg" radius="lg" withBorder>
             <WinnersByYearTable />
           </Paper>
-        </Grid.Col>*/}
+        </Grid.Col>
       </Grid>
 
     </Container>

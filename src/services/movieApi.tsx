@@ -61,16 +61,27 @@ export const getProducersInterval = async (): Promise<{
  */
 export const getWinnersByYear = async (year: number): Promise<Movie[]> => {
   const { data } = await api.get('/movies', {
-    params: { page:0, size: 9999, winner: true, year },
+    params: { page: 0, size: 9999, winner: true, year },
   });
-  return Array.isArray(data) ? data : [data]; // A API retorna objeto único ou array
+
+  const content = data.content || []; // <- pega corretamente o array dentro de content
+
+  return content.map((movie: any) => ({
+    id: movie.id,
+    year: movie.year,
+    title: movie.title,
+    studios: Array.isArray(movie.studios) ? movie.studios : [movie.studios],
+    producers: Array.isArray(movie.producers) ? movie.producers : [movie.producers],
+    winner: Boolean(movie.winner),
+  }));
 };
+
 
 /**
  * Utilitário para extrair todos os anos únicos da lista
  */
 export const getAllYears = async (): Promise<string[]> => {
-  const response = await getMovies(0, 999);
+  const response = await getMovies(0, 999, undefined, true);
 
   if (!response || !response.content) {
     return []; // evita crash
