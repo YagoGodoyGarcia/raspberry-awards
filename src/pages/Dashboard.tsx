@@ -15,13 +15,13 @@ const Dashboard = () => {
             <MultipleWinnersTable />
           </Paper>
         </Grid.Col>
-        {/** 
+        
         <Grid.Col span={{ base: 12, md: 6 }}>
           <Paper shadow="sm" p="lg" radius="lg" withBorder>
             <TopStudiosTable />
           </Paper>
         </Grid.Col>
-
+{/** 
         <Grid.Col span={{ base: 12, md: 6 }}>
           <Paper shadow="sm" p="lg" radius="lg" withBorder>
             <ProducersIntervalTable />
