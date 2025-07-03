@@ -61,7 +61,7 @@ export const getProducersInterval = async (): Promise<{
  */
 export const getWinnersByYear = async (year: number): Promise<Movie[]> => {
   const { data } = await api.get('/movies', {
-    params: { winner: true, year },
+    params: { page:0, size: 9999, winner: true, year },
   });
   return Array.isArray(data) ? data : [data]; // A API retorna objeto único ou array
 };
