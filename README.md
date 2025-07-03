@@ -24,7 +24,6 @@ Acesse a demonstração do projeto em produção:
 
 ### Lista de Filmes
 ![Lista de Filmes Screenshot](./assets/list-preview.png)
-
 </details>
 
 ---
