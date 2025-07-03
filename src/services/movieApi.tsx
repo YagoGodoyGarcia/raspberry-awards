@@ -32,6 +32,7 @@ export const getMultipleWinners = async (): Promise<{ years: YearWinner[] }> => 
   return data;
 };
 
+
 /**
  * Estúdios com mais vitórias
  */

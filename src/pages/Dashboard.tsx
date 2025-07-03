@@ -15,7 +15,7 @@ const Dashboard = () => {
             <MultipleWinnersTable />
           </Paper>
         </Grid.Col>
-
+        {/** 
         <Grid.Col span={{ base: 12, md: 6 }}>
           <Paper shadow="sm" p="lg" radius="lg" withBorder>
             <TopStudiosTable />
@@ -32,8 +32,9 @@ const Dashboard = () => {
           <Paper shadow="sm" p="lg" radius="lg" withBorder>
             <WinnersByYearTable />
           </Paper>
-        </Grid.Col>
+        </Grid.Col>*/}
       </Grid>
+
     </Container>
   );
 };

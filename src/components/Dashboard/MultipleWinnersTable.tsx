@@ -1,49 +1,55 @@
 import { useEffect, useState } from "react"
-import { YearWinner } from "./interfaces/DataModel"
-import { Table, Title } from "@mantine/core";
-import { getMultipleWinners } from '../../services/movieApi';
+import { YearWinner, Movie } from "./interfaces/DataModel"
+import { Table, Title } from "@mantine/core"
+import { getMultipleWinners, getMovies } from "../../services/movieApi"
+import { getYearsWithMultipleWinners } from "../../utils/movieUtils" // vamos criar essa função separada
 
+const MultipleWinnersTable = () => {
+  const [data, setData] = useState<YearWinner[]>([])
 
+  const fetchData = async () => {
+    try {
+      const result = await getMultipleWinners()
+      setData(result.years || [])
+    } catch (err) {
+      console.warn("API failed, using fallback logic:", err)
 
-const MutipleWinnersTable = () => {
-
-    const [data, setData] = useState<YearWinner[]>([]);
-
-
-    const fetchData = async () => {
-        const result = await getMultipleWinners()
-        setData(result.years)
+      try {
+        const movies = await getMovies(0, 9999)
+        const localResult = getYearsWithMultipleWinners(movies.content)
+        setData(localResult)
+      } catch (e) {
+        console.error("Failed to process local movie data:", e)
+      }
     }
+  }
 
-    useEffect(() => {
-        fetchData()
-    }, [])
+  useEffect(() => {
+    fetchData()
+  }, [])
 
-    return (
-        <>
-            <Title order={3}>Anos com múltiplos vencedores</Title>
+  return (
+    <>
+      <Title order={3} mb="sm">Years with multiple winners</Title>
 
-            <Table striped highlightOnHover withColumnBorders>
-                <thead>
-                    <tr>
-                        <th>Ano</th>
-                        <th>Quantidadede vencedores</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        data.map(({ year, winnerCount }) => (
-                            <tr key={year}>
-                                <td>{year}</td>
-                                <td>{winnerCount}</td>
-                            </tr>
-                        ))
-                    }
-                </tbody>
-            </Table>
-        </>
-    )
+      <Table striped highlightOnHover withColumnBorders>
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Winner count</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map(({ year, winnerCount }) => (
+            <tr key={year}>
+              <td>{year}</td>
+              <td>{winnerCount}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </>
+  )
 }
 
-export default MutipleWinnersTable;
-
+export default MultipleWinnersTable
