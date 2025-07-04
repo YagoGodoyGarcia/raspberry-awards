@@ -17,7 +17,6 @@ const TopStudiosTable = () => {
       try {
         const movies = await getMovies(0, 9999);
         const localResult = getTopStudiosByWins(movies.content);
-        console.log(localResult);
         setStudios(localResult);
       } catch (e) {
         console.error('Failed to process local movie data:', e);
