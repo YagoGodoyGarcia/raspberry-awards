@@ -25,10 +25,10 @@ describe('WinnersByYearTable', () => {
   it('renderiza vencedores por Ano', async () => {
     render(<WinnersByYearTable />);
     // Aguarda os títulos aparecerem 
-    expect(await screen.findByText('Vencedores por Ano')).toBeInTheDocument();
-    expect(await screen.findByText('Título')).toBeInTheDocument();
-    expect(await screen.getByText('Estúdios')).toBeInTheDocument();
-    expect(await screen.getByText('Produtores')).toBeInTheDocument();
+    expect(await screen.findByText('List movie winners by year')).toBeInTheDocument();
+    expect(await screen.findByText('Id')).toBeInTheDocument();
+    expect(await screen.getByText('Year')).toBeInTheDocument();
+    expect(await screen.getByText('Title')).toBeInTheDocument();
 
   });
 });

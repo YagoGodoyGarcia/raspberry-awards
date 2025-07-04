@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2015",
     "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
+      "ES2015",
+      "DOM"
     ],
-    "types": ["jest", "node"],
+    "downlevelIteration": true,
+    "types": [
+      "jest",
+      "node"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,

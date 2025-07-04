@@ -1,39 +1,90 @@
-import { screen, render } from './test-utils'; // usa o custom render com BrowserRouter
+import { screen, render, fireEvent, waitFor, within } from './test-utils';
 import MovieTable from '../components/MovieList/MovieTable';
 
 const mockMovies = [
   {
     id: 1,
-    title: 'Filme A',
+    title: 'Movie A',
     year: 1990,
     studios: ['Studio A'],
-    producers: ['Produtor A'],
+    producers: ['Producer A'],
     winner: true,
+  },
+  {
+    id: 2,
+    title: 'Movie B',
+    year: 1991,
+    studios: ['Studio B'],
+    producers: ['Producer B'],
+    winner: false,
   },
 ];
 
 describe('MovieTable', () => {
-  it('exibe os dados dos filmes corretamente', async () => {
-    render(<MovieTable allMovies={[]} page={0} onPageChange={function (page: number): void {
-      throw new Error('Function not implemented.');
-    } } filters={{
-      title: '',
-      winner: ''
-    }} onChange={function (field: string, value: string): void {
-      throw new Error('Function not implemented.');
-    } } loading={false} onFilteredCountChange={function (count: number): void {
-      throw new Error('Function not implemented.');
-    } } />)
+  it('should filter movies by title and winner status', () => {
+    let filters = { title: '', winner: '' };
 
-    // Aguarda os títulos aparecerem 
-    expect(await screen.findByText('Título')).toBeInTheDocument();
-    expect(await screen.findByText('Ano')).toBeInTheDocument();
-    expect(await screen.findByText('Estúdios')).toBeInTheDocument();
-    expect(await screen.findByText('Produtores')).toBeInTheDocument();
-    expect(await screen.findByText('Vencedor?')).toBeInTheDocument();
-    // Verifica dados renderizados
-    expect(screen.getByText('Filme A')).toBeInTheDocument();
-    expect(screen.getByText('1990')).toBeInTheDocument();
-    expect(screen.getByText('Sim')).toBeInTheDocument();
+    const handleChange = (field: string, value: string) => {
+      filters = { ...filters, [field]: value };
+      rerender(
+        <MovieTable
+          allMovies={mockMovies}
+          page={0}
+          filters={filters}
+          onChange={handleChange}
+          loading={false}
+          onPageChange={() => {}}
+          onFilteredCountChange={() => {}}
+        />
+      );
+    };
+
+    const { rerender } = render(
+      <MovieTable
+        allMovies={mockMovies}
+        page={0}
+        filters={filters}
+        onChange={handleChange}
+        loading={false}
+        onPageChange={() => {}}
+        onFilteredCountChange={() => {}}
+      />
+    );
+
+    const tbody = screen.getAllByRole('rowgroup')[1];
+
+    expect(within(tbody).getByText('Movie A')).toBeInTheDocument();
+    expect(within(tbody).getByText('Movie B')).toBeInTheDocument();
+
+    fireEvent.change(screen.getByPlaceholderText('Filter by title'), {
+      target: { value: 'Movie A' },
+    });
+
+    expect(within(tbody).getByText('Movie A')).toBeInTheDocument();
+    expect(within(tbody).queryByText('Movie B')).not.toBeInTheDocument();
+
+    fireEvent.change(screen.getByRole('combobox'), {
+      target: { value: 'false' },
+    });
+
+    expect(within(tbody).queryByText('Movie A')).not.toBeInTheDocument();
+    expect(within(tbody).queryByText('Movie B')).not.toBeInTheDocument();
+    expect(within(tbody).getByText('Nenhum filme encontrado.')).toBeInTheDocument();
+  });
+
+  it('shows "Nenhum filme encontrado." when no movie matches filters', () => {
+    render(
+      <MovieTable
+        allMovies={mockMovies}
+        page={0}
+        filters={{ title: 'No Match', winner: 'true' }}
+        onChange={() => { }}
+        loading={false}
+        onPageChange={() => { }}
+        onFilteredCountChange={() => { }}
+      />
+    );
+
+    expect(screen.getByText('Nenhum filme encontrado.')).toBeInTheDocument();
   });
 });

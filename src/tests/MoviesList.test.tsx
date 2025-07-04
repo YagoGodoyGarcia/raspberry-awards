@@ -1,81 +1,73 @@
-import { screen, render, waitFor } from './test-utils'; // usa o custom render com BrowserRouter
+import { render, screen, waitFor, within } from './test-utils';
 import userEvent from '@testing-library/user-event';
 import Movies from '../pages/Movies';
 import * as api from '../services/movieApi';
+import React from 'react';
 
 jest.mock('../services/movieApi');
 const mockedApi = api as jest.Mocked<typeof api>;
 
 describe('Movies Page', () => {
-  
   beforeEach(() => {
     mockedApi.getAllYears.mockResolvedValue(['1990', '2000']);
-
     mockedApi.getMovies.mockResolvedValue({
       content: [
         {
           id: 1,
           year: 1990,
-          title: 'Filme A',
+          title: 'Movie A',
           studios: ['Studio A'],
-          producers: ['Produtor A'],
+          producers: ['Producer A'],
           winner: true,
         },
+        {
+          id: 2,
+          year: 1991,
+          title: 'Movie B',
+          studios: ['Studio B'],
+          producers: ['Producer B'],
+          winner: false,
+        },
       ],
-      totalPages: 2,
-      totalElements: 1,
+      totalPages: 1,
+      totalElements: 2,
       number: 0,
       size: 10,
     });
   });
 
-  it('renderiza componente movies', async () => {
-    render(<Movies />);
-
-    expect(await screen.findByText('Lista de Filmes')).toBeInTheDocument();
-  });
-/**
-  it('renderiza listagem com filtros e paginação', async () => {
-    render(<Movies />);
-
-    // Espera filtros renderizarem
-    await waitFor(() => {
-      expect(screen.getByLabelText('Ano')).toBeInTheDocument();
+  it('should render movies and apply filters and pagination correctly', async () => {
+    await React.act(async () => {
+      render(<Movies />);
     });
 
-    expect(screen.getByText('Filme A')).toBeInTheDocument();
-    expect(screen.getByText('1990')).toBeInTheDocument();
-    expect(screen.getByText('Sim')).toBeInTheDocument();
-  });
-
-  it('filtra por ano e vencedor', async () => {
-    render(<Movies />);
-
-    const anoSelect = screen.getByLabelText('Ano');
-    await userEvent.click(anoSelect);
-    await userEvent.click(screen.getByText('2000'));
-
-    const vencedorSelect = screen.getByLabelText('Vencedor');
-    await userEvent.click(vencedorSelect);
-    await userEvent.click(screen.getByText('Sim'));
+    const tbody = await screen.findAllByRole('rowgroup').then((groups) => groups[1]);
 
     await waitFor(() => {
-      expect(mockedApi.getMovies).toHaveBeenCalledWith(0, 10, 2000, true);
-    });
-  });
+      expect(within(tbody).getByText('Movie A')).toBeInTheDocument();
+      expect(within(tbody).getByText('1990')).toBeInTheDocument();
+      expect(within(tbody).getByText('Yes')).toBeInTheDocument();
 
-  it('navega para próxima página', async () => {
-    render(<Movies />);
+      expect(within(tbody).getByText('Movie B')).toBeInTheDocument();
+      expect(within(tbody).getByText('1991')).toBeInTheDocument();
+      expect(within(tbody).getByText('No')).toBeInTheDocument();
+    });
+
+    const input = screen.getByPlaceholderText('Filter by title');
+    await userEvent.clear(input);
+    await userEvent.type(input, 'Movie A');
 
     await waitFor(() => {
-      expect(screen.getByText('2')).toBeInTheDocument(); // botão página 2
+      expect(within(tbody).getByText('Movie A')).toBeInTheDocument();
+      expect(within(tbody).queryByText('Movie B')).not.toBeInTheDocument();
     });
 
-    await userEvent.click(screen.getByText('2'));
+    const select = screen.getByRole('combobox');
+    await userEvent.selectOptions(select, 'false');
 
     await waitFor(() => {
-      expect(mockedApi.getMovies).toHaveBeenCalledWith(1, 10, expect.anything(), expect.anything());
+      expect(within(tbody).queryByText('Movie A')).not.toBeInTheDocument();
+      expect(screen.getByText('Nenhum filme encontrado.')).toBeInTheDocument();
     });
   });
-   */
 });

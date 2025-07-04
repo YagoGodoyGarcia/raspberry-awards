@@ -38,8 +38,8 @@ export const getTopStudiosByWins = (movies: Movie[]): Studio[] => {
 export const getProducersIntervalFromMovies = (
   movies: Movie[]
 ): { min: ProducerInterval[]; max: ProducerInterval[] } => {
-  const producerWins = new Map<string, number[]>()
 
+  const producerWins = new Map<string, number[]>()
   movies.forEach((movie) => {
     if (movie.winner) {
       movie.producers.forEach((producer) => {
@@ -52,11 +52,10 @@ export const getProducersIntervalFromMovies = (
   })
 
   const intervals: ProducerInterval[] = []
-
-  for (const [producer, years] of producerWins.entries() as any) {
+  for (const [producer, years] of producerWins.entries()) {
     if (years.length < 2) continue
 
-    const sortedYears = years.sort((a: any, b: any) => a - b)
+    const sortedYears = [...years].sort((a, b) => a - b)
 
     for (let i = 1; i < sortedYears.length; i++) {
       const previous = sortedYears[i - 1]

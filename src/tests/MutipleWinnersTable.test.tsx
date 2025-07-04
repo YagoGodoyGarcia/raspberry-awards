@@ -20,9 +20,9 @@ describe('MutipleWinnersTable', () => {
     render(<MutipleWinnersTable />);
 
     // Aguarda os títulos aparecerem 
-    expect(await screen.findByText(/Anos com múltiplos vencedores/i)).toBeInTheDocument();
-    expect(await screen.findByText('Ano')).toBeInTheDocument();
-    expect(await screen.findByText(/Quantidadede vencedores/i)).toBeInTheDocument();
+    expect(await screen.findByText(/Years with multiple winners/i)).toBeInTheDocument();
+    expect(await screen.findByText('Year')).toBeInTheDocument();
+    expect(await screen.findByText(/Winner count/i)).toBeInTheDocument();
 
     // Verifica dados renderizados
     expect(await screen.findByText('1986')).toBeInTheDocument();

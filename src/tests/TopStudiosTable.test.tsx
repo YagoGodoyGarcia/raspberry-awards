@@ -16,9 +16,9 @@ describe('TopStudiosTable', () => {
     render(<TopStudiosTable />);
 
     // Aguarda os títulos aparecerem 
-    expect(await screen.findByText(/Top 3 estúdios com mais vitórias/i)).toBeInTheDocument();
-    expect(await screen.findByText('Estúdio')).toBeInTheDocument();
-    expect(await screen.findByText('Vitórias')).toBeInTheDocument();
+    expect(await screen.findByText(/Top 3 studios with most wins/i)).toBeInTheDocument();
+    expect(await screen.findByText('Studio')).toBeInTheDocument();
+    expect(await screen.findByText('Wins')).toBeInTheDocument();
 
     await waitFor(() => {
       // Verifica dados renderizados

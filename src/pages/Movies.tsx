@@ -31,7 +31,6 @@ const Movies = () => {
     setLoading(true);
     try {
       const response = await getMovies(0, 9999);
-      console.log(response.content)
       setAllMovies(response.content || []);
     } catch (error) {
       console.error('Erro ao buscar filmes:', error);
