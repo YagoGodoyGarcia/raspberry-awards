@@ -19,7 +19,7 @@ describe('MutipleWinnersTable', () => {
   it('renderiza todos os painéis principais do dashboard', async () => {
     render(<MutipleWinnersTable />);
 
-    // Aguarda os títulos aparecerem 
+    // Aguarda os títulos aparecerem
     expect(await screen.findByText(/Years with multiple winners/i)).toBeInTheDocument();
     expect(await screen.findByText('Year')).toBeInTheDocument();
     expect(await screen.findByText(/Winner count/i)).toBeInTheDocument();

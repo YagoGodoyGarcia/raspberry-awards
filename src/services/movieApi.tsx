@@ -1,8 +1,14 @@
-import axios from "axios";
-import { PaginatedMoviesResponse, YearWinner, Studio, ProducerInterval, Movie } from "./interfaces/moveApiModel";
+import axios from 'axios';
+import {
+  PaginatedMoviesResponse,
+  YearWinner,
+  Studio,
+  ProducerInterval,
+  Movie,
+} from './interfaces/moveApiModel';
 
 const api = axios.create({
-  baseURL: 'https://challenge.outsera.tech/api',
+  baseURL: 'https://challenge-old.outsera.tech/api',
 });
 
 /**
@@ -31,7 +37,6 @@ export const getMultipleWinners = async (): Promise<{ years: YearWinner[] }> => 
   });
   return data;
 };
-
 
 /**
  * Estúdios com mais vitórias
@@ -75,7 +80,6 @@ export const getWinnersByYear = async (year: number): Promise<Movie[]> => {
     winner: Boolean(movie.winner),
   }));
 };
-
 
 /**
  * Utilitário para extrair todos os anos únicos da lista

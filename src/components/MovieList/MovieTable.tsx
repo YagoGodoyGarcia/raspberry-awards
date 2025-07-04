@@ -31,15 +31,12 @@ const MovieTable = ({
 }) => {
   // aplicar filtros localmente
   const filteredMovies = useMemo(() => {
-    return allMovies.filter((movie) => {
+    return allMovies.filter(movie => {
       const matchTitle = filters.title
         ? movie.title.toLowerCase().includes(filters.title.toLowerCase())
         : true;
 
-      const matchWinner =
-        filters.winner !== ''
-          ? String(movie.winner) === filters.winner
-          : true;
+      const matchWinner = filters.winner !== '' ? String(movie.winner) === filters.winner : true;
 
       return matchTitle && matchWinner;
     });
@@ -65,18 +62,17 @@ const MovieTable = ({
               type="text"
               placeholder="Filter by title"
               value={filters.title}
-              className={"filterInput"}
-              onChange={(e) => onChange('title', e.target.value)}
+              className={'filterInput'}
+              onChange={e => onChange('title', e.target.value)}
               style={{ width: '100%' }}
             />
           </th>
           <th>
             Winner?
             <select
-              className={"filterInput"}
-
+              className={'filterInput'}
               value={filters.winner}
-              onChange={(e) => {
+              onChange={e => {
                 onChange('winner', e.target.value);
               }}
             >

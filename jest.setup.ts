@@ -11,4 +11,3 @@ global.ResizeObserver = class ResizeObserver {
 
 global.TextEncoder = TextEncoder as typeof global.TextEncoder;
 global.TextDecoder = TextDecoder as typeof global.TextDecoder;
-

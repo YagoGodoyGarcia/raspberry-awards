@@ -1,6 +1,6 @@
-import { Select, Button, Group } from "@mantine/core";
-import { useState } from "react";
-import { IconSearch } from "@tabler/icons-react";
+import { Select, Button, Group } from '@mantine/core';
+import { useState } from 'react';
+import { IconSearch } from '@tabler/icons-react';
 
 interface YearSelectProps {
   years: string[];

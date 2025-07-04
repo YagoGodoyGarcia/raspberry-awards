@@ -17,7 +17,7 @@ const Filters = ({ years, filters, onChange }: FiltersProps) => {
         placeholder="Every year"
         data={years}
         value={filters.title}
-        onChange={(value) => onChange('year', value || '')}
+        onChange={value => onChange('year', value || '')}
         clearable
       />
 
@@ -29,7 +29,7 @@ const Filters = ({ years, filters, onChange }: FiltersProps) => {
           { value: 'false', label: 'No' },
         ]}
         value={filters.winner}
-        onChange={(value) => onChange('winner', value || '')}
+        onChange={value => onChange('winner', value || '')}
         clearable
       />
     </Group>

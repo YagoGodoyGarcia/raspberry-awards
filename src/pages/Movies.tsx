@@ -1,10 +1,5 @@
 import { useEffect, useState } from 'react';
-import {
-  Container,
-  Title,
-  Paper,
-  Stack,
-} from '@mantine/core';
+import { Container, Title, Paper, Stack } from '@mantine/core';
 import { getMovies, getAllYears } from '../services/movieApi';
 import Pagination from '../components/MovieList/Pagination';
 import MovieTable from '../components/MovieList/MovieTable';
@@ -45,7 +40,7 @@ const Movies = () => {
   }, []);
 
   const handleFilterChange = (field: string, value: string) => {
-    setFilters((prev) => ({
+    setFilters(prev => ({
       ...prev,
       [field]: value,
     }));
@@ -54,7 +49,9 @@ const Movies = () => {
 
   return (
     <Container size="xl" py="lg">
-      <Title order={2} mb="md">List movies</Title>
+      <Title order={2} mb="md">
+        List movies
+      </Title>
       <Paper shadow="sm" p="lg" radius="lg" withBorder>
         <Stack gap="md">
           <MovieTable
@@ -64,15 +61,9 @@ const Movies = () => {
             onChange={handleFilterChange}
             loading={loading}
             onPageChange={setPage}
-            onFilteredCountChange={(count: number) =>
-              setTotalPages(Math.ceil(count / 10))
-            }
+            onFilteredCountChange={(count: number) => setTotalPages(Math.ceil(count / 10))}
           />
-          <Pagination
-            currentPage={page}
-            totalPages={totalPages}
-            onPageChange={setPage}
-          />
+          <Pagination currentPage={page} totalPages={totalPages} onPageChange={setPage} />
         </Stack>
       </Paper>
     </Container>

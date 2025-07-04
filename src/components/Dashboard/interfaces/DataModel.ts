@@ -1,20 +1,18 @@
-
-
-export interface YearWinner{
-    year: number,
-    winnerCount: number
+export interface YearWinner {
+  year: number;
+  winnerCount: number;
 }
 
-export interface Studio{
-    name: string;
-    winCount: number;
+export interface Studio {
+  name: string;
+  winCount: number;
 }
 
 export interface ProducerInterval {
-    producer: string;
-    interval: number;
-    previousWin: number;
-    followingWin: number;
+  producer: string;
+  interval: number;
+  previousWin: number;
+  followingWin: number;
 }
 
 export interface YearSelectProps {

@@ -41,7 +41,7 @@ describe('Movies Page', () => {
       render(<Movies />);
     });
 
-    const tbody = await screen.findAllByRole('rowgroup').then((groups) => groups[1]);
+    const tbody = await screen.findAllByRole('rowgroup').then(groups => groups[1]);
 
     await waitFor(() => {
       expect(within(tbody).getByText('Movie A')).toBeInTheDocument();

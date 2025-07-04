@@ -78,10 +78,10 @@ describe('MovieTable', () => {
         allMovies={mockMovies}
         page={0}
         filters={{ title: 'No Match', winner: 'true' }}
-        onChange={() => { }}
+        onChange={() => {}}
         loading={false}
-        onPageChange={() => { }}
-        onFilteredCountChange={() => { }}
+        onPageChange={() => {}}
+        onFilteredCountChange={() => {}}
       />
     );
 

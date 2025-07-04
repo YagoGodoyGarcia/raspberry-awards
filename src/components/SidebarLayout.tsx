@@ -67,7 +67,7 @@ const SidebarLayout = () => {
         {windowWidth < breakpoint && (
           <Burger
             opened={sidebarOpened}
-            onClick={() => setSidebarOpened((o) => !o)}
+            onClick={() => setSidebarOpened(o => !o)}
             size="sm"
             mb="md"
             color={theme.colors.gray[6]}

@@ -1,8 +1,8 @@
-import { Title, Table } from "@mantine/core";
-import { useState, useEffect } from "react";
-import { Movie } from "./interfaces/DataModel";
-import YearSelect from "./YearSelect";
-import { getAllYears, getWinnersByYear } from "../../services/movieApi";
+import { Title, Table } from '@mantine/core';
+import { useState, useEffect } from 'react';
+import { Movie } from './interfaces/DataModel';
+import YearSelect from './YearSelect';
+import { getAllYears, getWinnersByYear } from '../../services/movieApi';
 
 const WinnersByYearTable = () => {
   const [selectedYear, setSelectedYear] = useState('');
@@ -10,12 +10,10 @@ const WinnersByYearTable = () => {
   const [years, setYears] = useState<string[]>([]);
 
   useEffect(() => {
-    getAllYears().then((data) => setYears(data));
-    
+    getAllYears().then(data => setYears(data));
   }, []);
 
   const handleSearch = async (year: string) => {
-    
     const movies = await getWinnersByYear(parseInt(year));
     setWinners(movies);
   };
@@ -33,7 +31,7 @@ const WinnersByYearTable = () => {
           </tr>
         </thead>
         <tbody>
-          {winners.map((movie) => (
+          {winners.map(movie => (
             <tr key={movie.id}>
               <td>{movie.id}</td>
               <td>{movie.year}</td>

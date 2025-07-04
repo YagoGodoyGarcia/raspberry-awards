@@ -12,7 +12,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: Props) => {
       <MantinePagination
         total={totalPages}
         value={currentPage + 1}
-        onChange={(page) => onPageChange(page - 1)}
+        onChange={page => onPageChange(page - 1)}
       />
     </Center>
   );

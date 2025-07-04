@@ -1,6 +1,6 @@
 # 🍿 Raspberry Awards - Frontend
 
-Interface web para visualizar dados da premiação Golden Raspberry Awards (categoria *Pior Filme*). Desenvolvido como parte de um desafio técnico front-end.
+Interface web para visualizar dados da premiação Golden Raspberry Awards (categoria _Pior Filme_). Desenvolvido como parte de um desafio técnico front-end.
 
 ---
 
@@ -20,10 +20,13 @@ Acesse a demonstração do projeto em produção:
 <br>
 
 ### Dashboard
+
 ![Dashboard Screenshot](./assets/dashboard-preview.png)
 
 ### Lista de Filmes
+
 ![Lista de Filmes Screenshot](./assets/list-preview.png)
+
 </details>
 
 ---
@@ -31,12 +34,14 @@ Acesse a demonstração do projeto em produção:
 ## 📚 Funcionalidades
 
 ### 📊 Dashboard
+
 - Listagem dos anos com múltiplos vencedores
 - Top 3 estúdios com mais vitórias
 - Produtores com maior e menor intervalo entre vitórias
 - Lista de filmes vencedores por ano selecionado
 
 ### 🎬 Lista de Filmes
+
 - Paginação de filmes
 - Filtro por ano
 - Filtro por vencedor (sim/não)
@@ -50,7 +55,7 @@ Acesse a demonstração do projeto em produção:
 - [Mantine UI](https://mantine.dev/)
 - [Axios](https://axios-http.com/)
 - [Jest](https://jestjs.io/) + [Testing Library](https://testing-library.com/)
-- [Vite](https://vitejs.dev/) *(se aplicável)*
+- [Vite](https://vitejs.dev/) _(se aplicável)_
 
 ---
 

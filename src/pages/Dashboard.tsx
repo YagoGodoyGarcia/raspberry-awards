@@ -7,7 +7,9 @@ import WinnersByYearTable from '../components/Dashboard/WinnersByYearTable';
 const Dashboard = () => {
   return (
     <Container size="xl" py="lg">
-      <Title order={3} mb="md">Dashboard</Title>
+      <Title order={3} mb="md">
+        Dashboard
+      </Title>
 
       <Grid gutter="xl">
         <Grid.Col span={{ base: 12, md: 6 }}>
@@ -15,7 +17,7 @@ const Dashboard = () => {
             <MultipleWinnersTable />
           </Paper>
         </Grid.Col>
-        
+
         <Grid.Col span={{ base: 12, md: 6 }}>
           <Paper shadow="sm" p="lg" radius="lg" withBorder>
             <TopStudiosTable />
@@ -34,7 +36,6 @@ const Dashboard = () => {
           </Paper>
         </Grid.Col>
       </Grid>
-
     </Container>
   );
 };
